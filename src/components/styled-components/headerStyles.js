@@ -6,6 +6,15 @@ const moveUp = keyframes`
         opacity: 0;
     }
 
+    50% {
+        tranform: scale(2) translate(0, 0);
+
+    }
+
+    75% {
+        transform: scale(1.5) translate(0, 25%);
+    }
+
     to {
         transform: scale(1) translate(0, 0);
     }   
@@ -23,10 +32,11 @@ const HeaderContainer = styled.div`
 `
 
 const Logo = styled.img`
+    margin-top: 3rem;
     height: 8rem;
     @media (max-width: 1024px) {
-        height: 3rem;
-        width: 7rem;
+        height: 5rem;
+        width: 10rem;
     }
 
     animation: ${moveUp} 5s ease-out;
