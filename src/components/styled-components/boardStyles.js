@@ -5,7 +5,8 @@ const GameWrapper = styled.div`
     width: 100%;
     justify-content: center;
     text-align: center;
-	background-color: rgb(15, 65, 122);
+	margin-top: 10rem;
+	flex-wrap: wrap;
 `;
 
 const GameBoardGrid = styled.div`
@@ -15,6 +16,14 @@ const GameBoardGrid = styled.div`
     grid-template: repeat(10, 4rem) / repeat(10, 4rem);
     text-align: center;
     gap: 2px;
+
+	@media (max-width: 1350px) {
+		margin-top: 5rem;
+	}
+
+
+
+
 `;
 
 const SetupGridContainer = styled.div`
@@ -23,6 +32,7 @@ const SetupGridContainer = styled.div`
 	justify-content: center;
 	left: 0;
 	right: 0;
+	margin-bot: 5rem;
 `;
 
 const Cell = styled.div`
@@ -36,7 +46,7 @@ const Cell = styled.div`
 	transition: 0.3s;
 	position: ${(props) => props.position};
 	background-color: ${(props) =>
-		props.board === 'friendly' && props.hasShip ? 'black' 
+		props.board === 'friendly' && props.hasShip ? 'orange' 
 		: props.board === 'enemy' && props.shot && props.hasShip ? 'red'
 		: props.shot ? 'wheat' : ''};
 	opacity: 0.5
