@@ -11,14 +11,16 @@ function reducer(state, action) {
         }
 
         case 'SET_COMPUTER_SHIPS': {
-            const newShips = action.payload;
-            return {...state, players: {...state.players, computer: {...state.players.computer, ships: newShips}}};
+            let newState = {...state};
+            newState.players.computer.ships = action.payload;
+            return newState;
         }
 
         case 'FIRE_SHOT' : {
             const {player, location} = action.payload;
             let targetPlayer = player === 'computer' ? 'human' : 'computer';
             let newState = {...state};
+            console.log(newState.players[player]);
             newState.players[player].fireShot(location, newState.players[targetPlayer].gameboard)
             return newState;
         }
@@ -30,16 +32,13 @@ function reducer(state, action) {
             return newState;
         }
 
-
-
         case 'SET_WINNER' : {
             const winner = action.payload === 'human' ? 'human' : 'computer';
             return {...state, winner: winner};
         }
 
         case 'SET_TURN' : {
-            return state;
-            // return {...state, turn: action.payload};
+            return {...state, turn: action.payload};
         }
         
         default: return state;
