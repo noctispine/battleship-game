@@ -3,7 +3,6 @@ import { data } from '../../StateControl'
 import { SetupGridContainer, GameBoardGrid, Cell, HitMark } from '../styled-components/boardStyles'
 import placeComputerShips from '../../gameLogic/placeComputerShips'
 import humanTurn from '../../gameLogic/humanTurn'
-import checkWinner from '../../gameLogic/checkWinner'
 
 const EnemyBoard = ({setPage}) => {
     const { state, dispatch } = useContext(data);
@@ -21,14 +20,12 @@ const EnemyBoard = ({setPage}) => {
             }
             else {
                 humanTurn(dispatch, pos, state.players.computer);
-                console.log(state);
             }
         }    
 
     }
     
     return (
-        <SetupGridContainer>
         <GameBoardGrid>
             {
                 enemyBoard.board.map((cell, index) => {
@@ -44,7 +41,6 @@ const EnemyBoard = ({setPage}) => {
                 })
             }
         </GameBoardGrid>
-        </SetupGridContainer>
     )
 }
 
