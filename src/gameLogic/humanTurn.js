@@ -11,10 +11,12 @@ function humanTurn(dispatch, index, computer) {
         dispatch( {type: 'SET_SHIP_HITS', payload: {targetPlayer: 'computer', targetShip ,targetShipHits: targetShip.hits }} )
     }
 
-    
+    if (!computer.gameboard.board[index].isShot){
+        dispatch( {type: 'SET_TURN', payload: 1} );
+
+    }
 
     dispatch( {type: 'FIRE_SHOT', payload: {player: 'human', location: index}} );
-    dispatch( {type: 'SET_TURN', payload: 1} );
     
 };
 

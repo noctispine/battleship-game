@@ -5,6 +5,10 @@ import {
     GameBoardGrid,
     Cell,
 } from "../styled-components/boardStyles";
+import { SetupContainer,
+         AxisButton,
+} from "../styled-components/setupPlayerBoardStyles";  
+
 import shipTypes from "../../gameLogic/shipTypes";
 import Ship from "../../factories/ship";
 
@@ -22,9 +26,9 @@ const PlayerBoardSetup = ({ setPage }) => {
     // it causes some problems.
 
     useEffect(() => {
-        dispatch( {type: 'SET_COMPUTER_SHIPS', payload: ships} );
-        console.log(ships);
+        dispatch( {type: 'SET_PLAYER_SHIPS', payload: ships} );
     }, [shipLaunchCount]); 
+
 
     useEffect(() => {
         if (shipLaunchCount === shipTypes.length) {
@@ -59,15 +63,14 @@ const PlayerBoardSetup = ({ setPage }) => {
     };
 
     return (
-        <div>
-            <button
+        <SetupContainer>
+            <AxisButton
                 type="button"
                 onClick={() => setAxis(axis === "x" ? "y" : "x")}
             >
                 {axis}
-            </button>
+            </AxisButton>
 
-            <SetupGridContainer>
                 <GameBoardGrid>
                     {state.players.human.gameboard.board.map((cell, index) => {
 
@@ -81,8 +84,7 @@ const PlayerBoardSetup = ({ setPage }) => {
                         );
                     })}
                 </GameBoardGrid>
-            </SetupGridContainer>
-        </div>
+        </SetupContainer>
     );
 };
 
