@@ -4,6 +4,7 @@ import { data } from '../../StateControl'
 import Home from './Home'
 import PlayerBoardSetup from './PlayerBoardSetup'
 import HumanBoard from './HumanBoard'
+import { GameWrapper } from '../styled-components/boardStyles'
 
 const GameContainer = () => {
 
@@ -23,10 +24,10 @@ const GameContainer = () => {
         }
 
         case 2: {
-            return  (<>
+            return  (<GameWrapper>
                 <HumanBoard setPage={setPage} />
                 <EnemyBoard setPage={setPage} />
-            </>);
+            </GameWrapper>);
 
         }
 
