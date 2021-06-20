@@ -1,5 +1,5 @@
 function computerTurn(dispatch, human) {
-    randomLocation = parseInt(Math.random() * 100 % 100);
+    randomLocation = parseInt(Math.random() * 100 % 100, 10);
     
     if (human.gameboard.board[randomLocation].hasShip && !human.gameboard.board[randomLocation].isShot) {
         const ships = [...human.ships];

@@ -8,7 +8,6 @@ import checkWinner from '../../gameLogic/checkWinner'
 const EnemyBoard = ({setPage}) => {
     const { state, dispatch } = useContext(data);
     const enemyBoard = state.players.computer.gameboard;
-    // move it to parent component.
 
     useEffect(() =>  {
         placeComputerShips(dispatch, state.players.computer);

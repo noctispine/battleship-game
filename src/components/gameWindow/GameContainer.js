@@ -3,6 +3,7 @@ import EnemyBoard from './EnemyBoard'
 import { data } from '../../StateControl'
 import Home from './Home'
 import PlayerBoardSetup from './PlayerBoardSetup'
+import HumanBoard from './HumanBoard'
 
 const GameContainer = () => {
 
@@ -17,12 +18,15 @@ const GameContainer = () => {
         }
 
         case 1: {
-            return <PlayerBoardSetup setPage={setPage} /> 
+            return <PlayerBoardSetup setPage={setPage} /> ;
 
         }
 
         case 2: {
-            return  <EnemyBoard setPage={setPage} /> ;
+            return  (<>
+                <HumanBoard setPage={setPage} />
+                <EnemyBoard setPage={setPage} />
+            </>);
 
         }
 
