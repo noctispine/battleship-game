@@ -1,20 +1,27 @@
-function computerTurn(dispatch, human) {
-    randomLocation = parseInt(Math.random() * 100 % 100, 10);
-    
+function computerTurn(dispatch, human, randomLocation) {
+           
     if (human.gameboard.board[randomLocation].hasShip && !human.gameboard.board[randomLocation].isShot) {
         const ships = [...human.ships];
         const targetShip = ships.find(ship => ship.position.find(pos => pos === randomLocation));
+        console.log(targetShip);
         targetShip.hit(randomLocation);
 
-        dispatch( {type: 'SET_SHIP_HITS', payload: {targetPlayer: 'human', targetShip, targetShipHits: targetShip.hits}} )
-        // Later it will replace with an ai
-        
-        setTimeout(() => {
-            dispatch( {type: 'FIRE_SHOT', payload: {player: 'computer', location: randomLocation}} );
-            dispatch( {type: 'SET_TURN', payload: 0} );            
-        },1500);
+        dispatch( {type: 'SET_SHIP_HITS', payload: {targetPlayer: 'human', targetShip ,targetShipHits: targetShip.hits }} )
     }
+
+    
+    
+    dispatch( {type: 'FIRE_SHOT', payload: {player: 'computer', location: randomLocation}} );
+    dispatch( {type: 'SET_TURN', payload: 0} );
+
+
+
+
 }
+
+
+    
+
 
 
 export default computerTurn;
