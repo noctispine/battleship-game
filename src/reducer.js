@@ -40,6 +40,16 @@ function reducer(state, action) {
         case 'SET_TURN' : {
             return {...state, turn: action.payload};
         }
+
+        case 'SET_RESET' : {
+            const newState = {
+                players: {},
+                turn: 0,
+                winner: ''
+            };
+            
+            return newState;
+        }
         
         default: return state;
     }
