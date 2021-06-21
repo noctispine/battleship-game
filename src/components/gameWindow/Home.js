@@ -32,7 +32,9 @@ const Home = ({setPage}) => {
 
   return (
     <FormWrapper>
+    <div className='typewritter'>
       <h2>Enter Your Name</h2>
+    </div>
       <StyledForm onSubmit={handleSubmit}>
           <StyledInput
             type="text"

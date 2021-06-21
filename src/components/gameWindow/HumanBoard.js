@@ -6,15 +6,14 @@ import checkWinner from '../../gameLogic/checkWinner';
 
 
 
-const HumanBoard = ({ setPage }) => {
+const HumanBoard = ({ setPopup }) => {
     const {state, dispatch} = useContext(data);
     console.log(state.players.human);
 
     useEffect(() => {
         if (state.turn === 1) {
-            if (state.winner !== '') {
-                // latter, it would be replaced with a pop-up
-                setPage(3);
+            if(state.winner !== '') {
+                setTimeout(() => setPopup(true) ,1500)
             }
             else {
 

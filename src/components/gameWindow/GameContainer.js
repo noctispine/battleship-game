@@ -1,15 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import EnemyBoard from './EnemyBoard'
 import { data } from '../../StateControl'
 import Home from './Home'
 import PlayerBoardSetup from './PlayerBoardSetup'
 import HumanBoard from './HumanBoard'
 import { GameWrapper } from '../styled-components/boardStyles'
+import ResetPopup from './ResetPopup'
 
 const GameContainer = () => {
 
     const { state } = useContext(data);
-
+    const [showResetPopUp, setShowResetPopup] = useState(false);
     const [page, setPage] = useState(0);
 
 
@@ -25,8 +26,9 @@ const GameContainer = () => {
 
         case 2: {
             return  (<GameWrapper>
-                <HumanBoard setPage={setPage} />
-                <EnemyBoard setPage={setPage} />
+                {showResetPopUp && <ResetPopup setPage={setPage}/>}
+                <HumanBoard setPopup={setShowResetPopup} />
+                <EnemyBoard setPopup={setShowResetPopup} />
             </GameWrapper>);
 
         }

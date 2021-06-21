@@ -5,7 +5,7 @@ import placeComputerShips from '../../gameLogic/placeComputerShips'
 import humanTurn from '../../gameLogic/humanTurn'
 import checkWinner from '../../gameLogic/checkWinner'
 
-const EnemyBoard = ({setPage}) => {
+const EnemyBoard = ({setPopup}) => {
     const { state, dispatch } = useContext(data);
     const enemyBoard = state.players.computer.gameboard;
 
@@ -17,8 +17,8 @@ const EnemyBoard = ({setPage}) => {
         if (checkWinner(state.players.computer)) dispatch( {type: 'SET_WINNER', payload: 'computer'});
         if (state.turn === 0) {
             if(state.winner !== '') {
-                // latter, it would be replaced with a pop-up 
-                setPage(3);
+                setTimeout(() => setPopup(true) ,1500)
+                
             }
             else {
                 humanTurn(dispatch, pos, state.players.computer, checkWinner);
