@@ -1,6 +1,6 @@
 import checkWinner from './checkWinner'
 
-function humanTurn(dispatch, index, computer) {
+function humanTurn(dispatch, index, computer, checkWinner) {
     
     if (computer.gameboard.board[index].hasShip && !computer.gameboard.board[index].isShot) {
         const ships = [...computer.ships];
@@ -17,6 +17,7 @@ function humanTurn(dispatch, index, computer) {
     }
 
     dispatch( {type: 'FIRE_SHOT', payload: {player: 'human', location: index}} );
+    if(checkWinner(computer)) dispatch( {type: 'SET_WINNER', payload: 'human'}  );
     
 };
 

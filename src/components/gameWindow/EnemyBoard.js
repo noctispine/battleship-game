@@ -3,6 +3,7 @@ import { data } from '../../StateControl'
 import { SetupGridContainer, GameBoardGrid, Cell, HitMark } from '../styled-components/boardStyles'
 import placeComputerShips from '../../gameLogic/placeComputerShips'
 import humanTurn from '../../gameLogic/humanTurn'
+import checkWinner from '../../gameLogic/checkWinner'
 
 const EnemyBoard = ({setPage}) => {
     const { state, dispatch } = useContext(data);
@@ -13,13 +14,14 @@ const EnemyBoard = ({setPage}) => {
     },[]);
 
     const handlePlayerShot = (pos) => {
+        if (checkWinner(state.players.computer)) dispatch( {type: 'SET_WINNER', payload: 'computer'});
         if (state.turn === 0) {
             if(state.winner !== '') {
                 // latter, it would be replaced with a pop-up 
-                setPage(2);
+                setPage(3);
             }
             else {
-                humanTurn(dispatch, pos, state.players.computer);
+                humanTurn(dispatch, pos, state.players.computer, checkWinner);
             }
         }    
 

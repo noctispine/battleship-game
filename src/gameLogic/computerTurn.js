@@ -1,4 +1,7 @@
-function computerTurn(dispatch, human, randomLocation) {
+
+
+
+function computerTurn(dispatch, human, randomLocation, checkWinner) {
            
     if (human.gameboard.board[randomLocation].hasShip && !human.gameboard.board[randomLocation].isShot) {
         const ships = [...human.ships];
@@ -14,7 +17,7 @@ function computerTurn(dispatch, human, randomLocation) {
     dispatch( {type: 'FIRE_SHOT', payload: {player: 'computer', location: randomLocation}} );
     dispatch( {type: 'SET_TURN', payload: 0} );
 
-
+    if(checkWinner(human)) dispatch( {type: 'SET_WINNER', payload: 'computer'}  );
 
 
 }

@@ -32,7 +32,7 @@ const GameContainer = () => {
         }
 
         case 3: {
-            return <p>You won.</p>
+            return <p>{state.winner} won.</p>
 
         }
         default: return <Home setPage={setPage} /> 
