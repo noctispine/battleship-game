@@ -20,7 +20,6 @@ function reducer(state, action) {
             const {player, location} = action.payload;
             let targetPlayer = player === 'computer' ? 'human' : 'computer';
             let newState = {...state};
-            console.log(newState.players[player]);
             newState.players[player].fireShot(location, newState.players[targetPlayer].gameboard)
             return newState;
         }
@@ -47,7 +46,6 @@ function reducer(state, action) {
                 turn: 0,
                 winner: ''
             };
-            
             return newState;
         }
         

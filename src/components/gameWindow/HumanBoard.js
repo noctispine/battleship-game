@@ -8,9 +8,9 @@ import checkWinner from '../../gameLogic/checkWinner';
 
 const HumanBoard = ({ setPopup }) => {
     const {state, dispatch} = useContext(data);
-    console.log(state.players.human);
 
     useEffect(() => {
+        
         if (state.turn === 1) {
             if(state.winner !== '') {
                 setTimeout(() => setPopup(true) ,1500)
@@ -18,19 +18,19 @@ const HumanBoard = ({ setPopup }) => {
             else {
 
                 while (true) {
+                      
                     const randomLocation = parseInt(Math.random() * 100, 10);
                     if (!state.players.human.gameboard.board[randomLocation].isShot) {
                         computerTurn(dispatch, state.players.human, randomLocation, checkWinner);
                         break;
                     }
-
+                    
                 }
-
             } 
         }
     }, [state.turn])
 
-    return (
+    return (    
             <GameBoardGrid>
                 {
                     state.players.human.gameboard.board.map((cell, index) => {

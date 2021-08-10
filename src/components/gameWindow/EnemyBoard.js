@@ -9,12 +9,12 @@ const EnemyBoard = ({setPopup}) => {
     const { state, dispatch } = useContext(data);
     const enemyBoard = state.players.computer.gameboard;
 
+    // set computer ships on the first render.
     useEffect(() =>  {
         placeComputerShips(dispatch, state.players.computer);
     },[]);
 
     const handlePlayerShot = (pos) => {
-        if (checkWinner(state.players.computer)) dispatch( {type: 'SET_WINNER', payload: 'computer'});
         if (state.turn === 0) {
             if(state.winner !== '') {
                 setTimeout(() => setPopup(true) ,1500)
@@ -38,7 +38,7 @@ const EnemyBoard = ({setPopup}) => {
                     shot={cell.isShot}
                     hasShip={cell.hasShip}
                     >
-                        <HitMark shot={cell.isShot}/>
+                        <HitMark shot={cell.isShot} hasShip={cell.hasShip}/>
                     </Cell>)
                 })
             }

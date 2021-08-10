@@ -6,7 +6,6 @@ class Ship {
     }   
 
     hit(coor) {
-        console.log('hitsss');
         this.hits.push(coor); 
     }
 

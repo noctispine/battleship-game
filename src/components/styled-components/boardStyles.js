@@ -1,23 +1,44 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
+
+const fadeIn = keyframes`
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+`
 
 const GameWrapper = styled.div`
     display: flex;
     width: 100%;
     justify-content: center;
     text-align: center;
-	margin-top: 10rem;
+	margin-bottom: 5rem;
 	flex-wrap: wrap;
+	margin-top: 3rem;
+	
+
 `;
 
 const GameBoardGrid = styled.div`
     display: grid;
     position: relative;
     margin: 0 auto;
-    grid-template: repeat(10, 4rem) / repeat(10, 4rem);
+    grid-template: repeat(10, 4vw) / repeat(10, 4vw	);
     text-align: center;
     gap: 2px;
 
+	animation: ${fadeIn} 3s ease-in-out;
+
 	@media (max-width: 1350px) {
+		grid-template: repeat(10, 6.5vw) / repeat(10, 6.5vw);
+		margin-top: 5rem;
+	}
+
+	@media (max-width: 767px) {
+		grid-template: repeat(10, 8vw) / repeat(10, 8vw);
 		margin-top: 5rem;
 	}
 
@@ -32,12 +53,12 @@ const SetupGridContainer = styled.div`
 	justify-content: center;
 	left: 0;
 	right: 0;
-	margin-bot: 5rem;
+	margin-bottom: 5rem;
 `;
 
 const Cell = styled.div`
 
-	border: 1px solid black;
+	border: 1px solid #F7C59F;
 	height: 100%;
 	width: 100%;
 	display: flex;
@@ -46,21 +67,11 @@ const Cell = styled.div`
 	transition: 0.3s;
 	position: ${(props) => props.position};
 	background-color: ${(props) =>
-		props.board === 'friendly' && props.hasShip ? 'orange' 
-		: props.board === 'enemy' && props.shot && props.hasShip ? 'red'
-		: props.shot ? 'wheat' : ''};
-	opacity: 0.5
+		props.board === 'friendly' && props.hasShip ? '#ff6b35' : ''};
 	&:hover {
 		background-color: ${(props) =>
-			props.board === 'friendly'
-				? 'transparent'
-				: props.board === 'enemy' && !props.shot
-				? 'rgba(60, 255, 60, 0.6)'
-				: props.shot
-				? 'rgba(255, 60, 60, 0.6)'
-				: props.highlight
-				? ''
-				: 'rgba(255, 60, 60, 0.6)'};
+			props.board === 'enemy' && props.hasShip && props.shot && props.hasShip ? 'rgba(246, 71, 71, .7)'
+			: '' };
 		cursor: ${(props) => props.cursor};
 	}
 `;
@@ -69,7 +80,7 @@ const Cell = styled.div`
 const HitMark = styled.span`
 	height: 1rem;
 	width: 1rem;
-	background-color: ${props => props.shot ? 'black' : ''};
+	background-color: ${props => props.shot && props.hasShip ? 'red' : props.shot ? 'black' : ''};
 	border-radius: 50%;
 	display: inline-block;
 `;

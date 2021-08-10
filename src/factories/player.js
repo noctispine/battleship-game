@@ -8,9 +8,7 @@ class Player {
     }
 
     fireShot(location, gameboard) {
-        
         if (!gameboard.board[location].isShot)
-            console.log('dıksın')
             gameboard.receiveAttack(location);
     }
 

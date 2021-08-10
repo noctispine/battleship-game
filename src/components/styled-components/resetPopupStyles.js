@@ -1,40 +1,63 @@
-import styled from "styled-components"
+import styled, {keyframes} from "styled-components"
 
-const PopupWrapper = styled.div`
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    flex-direction: row;
-    justify-content: center;
-    background-color: rgba(0,0,0, 0.8);
-    z-index: 100;
-    
-    h2 {
-        font-size: 2em;
+
+const fadeInBg = keyframes`
+    from {
+        background-color: rgba(0,0,0 , 0);
     }
-` 
+
+    to {
+        background-color: rgba(0,0,0 , .8);
+    }
+`
 
 const PopupContainer = styled.div`
-    position: relative;
-    left: 25%;
-    top: 25%;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, .8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: ${fadeInBg} 3s ease-in-out;  
+
+    @media (max-width: 1350px) {
+        height: 140vh;
+    }  
+`
+
+const PopupWrapper = styled.div`
+    background-color: rgba(0, 78, 137, .8);
+    position: absolute;
+    top: 20%;
     width: 50%;
-    background-color: white;
-    border: 3px solid black;
-    border-radius: 2px;
-    
+    margin: 0 auto;
+    ${'' /* animation: ${fadeInBg} 3s ease-in-out; */}
+    box-shadow: 5px 6px 10px 0;
+
+    h2 {
+        color: white;
+        font-size: 2em;
+    }
+
+	@media (max-width: 1350px) {
+        top: 30%;
+    }
 `
 
 const ResetButton = styled.button`
-    padding: 0.5rem 1rem;
+    padding: 1rem 2rem;
     text-align: center;
     text-decoration: none;
     border: none;
     display: inline-block;
     cursor: pointer;
     color: white;
-    background-color: rgba(0,0,0, 0.5);
+    background-color: rgba(0,0,0, .9);
     transition: 0.4s ease-in-out;
+    margin-bottom: 1.5rem;
 
 
     &:hover {

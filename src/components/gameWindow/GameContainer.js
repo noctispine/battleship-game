@@ -10,7 +10,7 @@ import ResetPopup from './ResetPopup'
 const GameContainer = () => {
 
     const { state } = useContext(data);
-    const [showResetPopUp, setShowResetPopup] = useState(false);
+    const [showResetPopup, setShowResetPopup] = useState(false);
     const [page, setPage] = useState(0);
 
 
@@ -26,17 +26,13 @@ const GameContainer = () => {
 
         case 2: {
             return  (<GameWrapper>
-                {showResetPopUp && <ResetPopup setPage={setPage}/>}
+                {showResetPopup && <ResetPopup setPage={setPage} setPopup={setShowResetPopup}/>}
                 <HumanBoard setPopup={setShowResetPopup} />
                 <EnemyBoard setPopup={setShowResetPopup} />
             </GameWrapper>);
 
         }
 
-        case 3: {
-            return <p>{state.winner} won.</p>
-
-        }
         default: return <Home setPage={setPage} /> 
 
     }
