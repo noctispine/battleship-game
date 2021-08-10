@@ -1,1 +1,1 @@
-[Live](http://https://noctispine.github.io/battleship-game/)
+[Live](https://noctispine.github.io/battleship-game/)
